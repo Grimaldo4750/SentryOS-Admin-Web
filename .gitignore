@@ -427,3 +427,15 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
+
+# =========================
+# Web app (Vite React SPA)
+# =========================
+dist/
+coverage/
+playwright-report/
+test-results/
+.env
+.env.local
+.env.*.local
+.env.production

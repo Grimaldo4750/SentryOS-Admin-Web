@@ -1,0 +1,138 @@
+@import "tailwindcss";
+@import "@fontsource-variable/geist";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Nord design tokens — the single place hex values may exist (constitution Principle VII).
+ * Semantic mapping is fixed:
+ *   #88C0D0 bright mint  → primary/interactive
+ *   #81A1C1 ice blue     → informational (links, focus, info states)
+ *   #BF616A aurora red   → destructive/error
+ *   #EBCB8B aurora yellow→ warning
+ *   #A3BE8C aurora green → success
+ * `--destructive-text` / `--warning-text` are AA-adjusted shades for body-size copy;
+ * the base accent tokens are used for fills, borders, icons, and large/bold text.
+ */
+:root {
+  /* Light theme — Nord Snow Storm surfaces with Polar Night text */
+  --background: #eceff4;
+  --foreground: #2e3440;
+  --card: #e5e9f0;
+  --card-foreground: #2e3440;
+  --popover: #eceff4;
+  --popover-foreground: #2e3440;
+  --primary: #88c0d0;
+  --primary-foreground: #2e3440;
+  --secondary: #d8dee9;
+  --secondary-foreground: #2e3440;
+  --muted: #e5e9f0;
+  --muted-foreground: #4c566a;
+  --accent: #d8dee9;
+  --accent-foreground: #2e3440;
+  --info: #81a1c1;
+  --info-foreground: #2e3440;
+  --destructive: #bf616a;
+  --destructive-foreground: #ffffff;
+  --destructive-text: #a3454e;
+  --warning: #ebcb8b;
+  --warning-foreground: #2e3440;
+  --warning-text: #7a5c10;
+  --success: #a3be8c;
+  --success-foreground: #2e3440;
+  --success-text: #47632f;
+  --border: #d8dee9;
+  --input: #d8dee9;
+  --ring: #81a1c1;
+  --radius: 0.5rem;
+}
+
+.dark {
+  /* Dark theme (default) — Nord Polar Night surfaces with Snow Storm text */
+  --background: #2e3440;
+  --foreground: #d8dee9;
+  --card: #3b4252;
+  --card-foreground: #d8dee9;
+  --popover: #3b4252;
+  --popover-foreground: #d8dee9;
+  --primary: #88c0d0;
+  --primary-foreground: #2e3440;
+  --secondary: #434c5e;
+  --secondary-foreground: #d8dee9;
+  --muted: #3b4252;
+  --muted-foreground: #a9b4c9;
+  --accent: #434c5e;
+  --accent-foreground: #eceff4;
+  --info: #81a1c1;
+  --info-foreground: #2e3440;
+  --destructive: #bf616a;
+  --destructive-foreground: #ffffff;
+  --destructive-text: #de9199;
+  --warning: #ebcb8b;
+  --warning-foreground: #2e3440;
+  --warning-text: #ebcb8b;
+  --success: #a3be8c;
+  --success-foreground: #2e3440;
+  --success-text: #a3be8c;
+  --border: #434c5e;
+  --input: #4c566a;
+  --ring: #88c0d0;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-info: var(--info);
+  --color-info-foreground: var(--info-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-destructive-text: var(--destructive-text);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-warning-text: var(--warning-text);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-success-text: var(--success-text);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --font-sans: "Geist Variable", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+    outline-color: color-mix(in oklab, var(--color-ring) 50%, transparent);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Visible focus for every interactive element (constitution Principle VII). */
+  :focus-visible {
+    outline: 2px solid var(--color-ring);
+    outline-offset: 2px;
+  }
+}
